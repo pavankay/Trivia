@@ -1,0 +1,42 @@
+﻿@model Trivia.Models.Answer
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Answer</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Text)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Text)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.IsRightAnswer)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.IsRightAnswer)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.Raw("Question")
+        </dt>
+        <dd class="col-sm-10">
+            @if (string.IsNullOrEmpty(ViewBag.QuestionText))
+            {
+                @Html.Raw("Question is not linked. Click on Edit to link a question to this answer.")
+            }
+            else
+            {
+                @Html.Raw(ViewBag.QuestionText)
+            }
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+</div>

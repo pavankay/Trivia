@@ -1,0 +1,43 @@
+﻿@model Trivia.Models.QuizViewModel
+
+@{
+    ViewData["Title"] = "Quiz";
+}
+
+<h1>Quiz</h1>
+
+<h4>Random Question</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Index" method="post">
+            <div class="form-group">
+                <p>
+                    <strong>
+                        @Model.Question.Text
+                    </strong>
+                </p>
+                Choose your answer:
+                <input type="hidden" asp-for="@Model.Question.Id" />
+                <ul>
+                    @foreach (var answer in Model.Question.Answers)
+                    {
+                    <li>
+                        <input type="radio" asp-for="SelectedAnswerId" value="@answer.Id" />
+                        <label asp-for="@answer.Id" class="control-label">@answer.Text</label>
+                    </li>
+                    }
+                </ul>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="submit" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+
