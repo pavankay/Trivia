@@ -25,14 +25,14 @@ namespace Trivia.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Text")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<bool>("IsRightAnswer")
                         .HasColumnType("bit");
 
                     b.Property<int>("QuestionId")
                         .HasColumnType("int");
+
+                    b.Property<string>("Text")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 

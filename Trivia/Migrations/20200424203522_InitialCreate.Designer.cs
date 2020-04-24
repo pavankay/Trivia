@@ -9,7 +9,7 @@ using Trivia.Data;
 namespace Trivia.Migrations
 {
     [DbContext(typeof(TriviaContext))]
-    [Migration("20200422235840_InitialCreate")]
+    [Migration("20200424203522_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -27,14 +27,14 @@ namespace Trivia.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Text")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<bool>("IsRightAnswer")
                         .HasColumnType("bit");
 
                     b.Property<int>("QuestionId")
                         .HasColumnType("int");
+
+                    b.Property<string>("Text")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
